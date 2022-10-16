@@ -1,5 +1,4 @@
 call plug#begin()
-	
 	Plug 'preservim/NERDTree'
 	Plug 'psliwka/vim-smoothie'
 	Plug 'vim-airline/vim-airline-themes'
@@ -14,7 +13,6 @@ call plug#begin()
 	Plug 'flazz/vim-colorschemes'
 	Plug 'kyoz/purify', {'rtp' : 'vim'}
 	Plug 'nightsense/cosmic_latte'
-	Plug 'phanviet/vim-monokai-pro'
 	Plug 'alvan/vim-closetag'
 	Plug 'junegunn/fzf'
 	Plug 'junegunn/fzf.vim'
@@ -28,19 +26,24 @@ call plug#begin()
 	Plug 'scrooloose/nerdcommenter'
 	Plug 'tpope/vim-fugitive'
 	Plug 'jiangmiao/auto-pairs'
+	Plug 'morhetz/gruvbox' 
 	Plug 'neoclide/coc.nvim'
-
+	Plug 'ryanoasis/vim-devicons'
+	Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 set termguicolors
-colorscheme monokai_pro
+colorscheme gruvbox 
 
+let g:gruvbox_contrast_dark = "hard"
+
+set encoding=UTF-8
 set nobackup
 syntax on
 set showmatch
 set ignorecase
 set incsearch
-set ts=4
+set ts=2
 set autoindent
 set smartindent
 set number
@@ -49,8 +52,8 @@ set rnu
 set ruler
 set cursorline
 set cursorcolumn
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set showmatch
 set hlsearch
 set incsearch
@@ -65,6 +68,9 @@ set hidden
 set nocp
 filetype plugin on
 
+let mapleader=","
+let NERDTreeQuitOnOpen=1
+
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 
@@ -72,11 +78,12 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gt <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <leader> s <Plug>(easymotion-s)
+
 
 nnoremap <C-j> 10<C-e>
 nnoremap <C-k> 10<C-y>
 nnoremap <silent> <C-f> :Files <CR>
-
 
 imap kk <Esc>
 imap <C-l> <right>
@@ -85,12 +92,10 @@ imap <C-j> <down>
 imap <C-h> <left> <CR>
 imap <C-t> kk :NERDTree <CR> 
 
-
 map ss :w <CR>
 map qq :q <CR>
 map nt :NERDTree <CR> 
 map <S-t> :vert :term <CR>
-
 
 set splitright
 
